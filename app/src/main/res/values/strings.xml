@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Star Wars</string>
+
+    <string name="star_wars_characters">Star Wars Characters</string>
+    <string name="details">Details</string>
+    <string name="starships_tag">Starships:</string>
+    <string name="height_tag">Height:</string>
+    <string name="gender_tag">Gender:</string>
+    <string name="name_tag">Name:</string>
+    <string name="button_retry">Retry</string>
+    <string name="internet_connection_message">Please check your internet connection.</string>
+    <string name="not_available">N/A</string>
+</resources>

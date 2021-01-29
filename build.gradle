@@ -1,0 +1,65 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = '1.4.21'
+    ext.safeArgs = "2.2.2"
+    ext.hiltGradlePluginVersion = "2.31.2-alpha"
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.1.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$safeArgs"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltGradlePluginVersion"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    androidKtxVersion = '1.1.0'
+    constraintLayoutVersion = '2.0.4'
+    coreVersion = '1.3.2'
+    coroutines = '1.3.5'
+    hiltVersion = '2.31.2-alpha'
+    hiltJetpackVersion = '1.0.0-alpha02'
+    lifecycleVersion = '2.2.0'
+    materialVersion = '1.2.1'
+    moshiVersion = '1.11.0'
+    navigationComponent = '2.3.2'
+    okHttp = '4.9.0'
+    okhttpLoggingInterceptorVersion = '4.9.0'
+    pagingVersion = '3.0.0-alpha12'
+    recyclerViewVersion = '1.2.0-beta01'
+    retrofitVersion = '2.9.0'
+    roomVersion = '2.3.0-alpha04'
+    supportLibVersion = '1.2.0'
+
+    // Test
+    androidTestRunner = '1.3.0'
+    archCoreTest = '2.1.0'
+    coreTest = '1.3.0'
+    coroutineTest = '1.3.5'
+    dexmakerMockito = '2.12.1'
+    espresso = '3.2.0'
+    hamcrest = '1.3'
+    googleTruth = '1.1.2'
+    jUnit = '4.13.1'
+    jUnitExt = '1.1.2'
+    mockito = '2.25.0'
+    roboelectric = '4.5'
+}
