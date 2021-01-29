@@ -1,6 +1,7 @@
 package com.android.test.starwars.ui.characters
 
 import android.os.Bundle
+import android.os.Parcelable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -31,6 +32,7 @@ class CharactersFragment : Fragment(), CharacterListAdapter.OnCharacterClickList
     private lateinit var binding: FragmentCharactersBinding
     private val viewModel: CharacterViewModel by viewModels()
     private lateinit var adapter: CharacterListAdapter
+    private var characterRecyclerViewState: Parcelable? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -105,6 +107,13 @@ class CharactersFragment : Fragment(), CharacterListAdapter.OnCharacterClickList
             lifecycleScope.launch {
                 viewModel.fetchCharacters().collectLatest {
                     adapter.submitData(it)
+
+                    // Restore the state of the list
+                    binding.characterRecyclerview.post {
+                        if (characterRecyclerViewState != null)
+                            binding.characterRecyclerview.layoutManager?.onRestoreInstanceState(characterRecyclerViewState)
+                        characterRecyclerViewState = null
+                    }
                 }
             }
         } else {
@@ -130,6 +139,9 @@ class CharactersFragment : Fragment(), CharacterListAdapter.OnCharacterClickList
     }
 
     override fun onCharacterClickListener(data: CharacterWithStarships) {
+        // Save the state of the list
+        characterRecyclerViewState = binding.characterRecyclerview.layoutManager?.onSaveInstanceState()
+
         findNavController().navigate(
             CharactersFragmentDirections.toCharacterDetailsFragment(data)
         )
