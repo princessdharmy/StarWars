@@ -1,5 +1,5 @@
 # StarWars
-An offline-first app that shows the list of characters of `Star Wars` alongside their details like name, gender, height and their rerspective starships.
+An offline-first app that shows the list of characters of `Star Wars` alongside their details like name, gender, height and their respective starships.
 
 ## Code Structure 
 This is a single module app which uses the MVVM architectural design pattern with some other third-party libraries and Jetpack components.
@@ -14,6 +14,8 @@ This is a single module app which uses the MVVM architectural design pattern wit
 7. Paging3 for displaying chunk of data per page
 8. Navigation Component for navigating through the app
 9. Kotlin Coroutines with Flow for repository layer and LiveData for ViewModel and View Layers
+10. Mockito for running local unit tests
+11. MockWebServer to test HTTP/HTTPS calls
 
 ## Demo
 <img width=300 src="https://res.cloudinary.com/princessdee/image/upload/v1611949463/ezgif.com-gif-maker_1_b4zpwj.gif">
