@@ -94,6 +94,8 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttpLoggingInterceptorVersion"
     implementation "com.squareup.okhttp3:okhttp:$okHttp"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
+
 
     // Moshi
     implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
@@ -116,6 +118,7 @@ dependencies {
     testImplementation "org.mockito:mockito-core:$mockito"
     testImplementation "com.google.dagger:hilt-android-testing:$hiltVersion"
     kaptTest "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.7.2'
 
     // Instrumented Unit Tests
     androidTestImplementation "androidx.test:runner:$androidTestRunner"

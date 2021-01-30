@@ -5,12 +5,16 @@ import androidx.paging.*
 import com.android.test.starwars.data.coroutines.DispatcherProvider
 import com.android.test.starwars.data.local.StarWarsDatabase
 import com.android.test.starwars.data.model.CharacterWithStarships
+import com.android.test.starwars.data.model.RemoteKeys
 import com.android.test.starwars.data.model.Starships
 import com.android.test.starwars.data.networkresource.NetworkStatus
 import com.android.test.starwars.data.networkresource.safeApiCall
 import com.android.test.starwars.data.paging.CharacterMediator
 import com.android.test.starwars.data.remote.ApiService
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -67,6 +71,21 @@ class CharacterRepositoryImpl @Inject constructor(
             }
         }
     }
+
+    /**
+     * For unit testing
+     * Never called or used in the view
+     */
+    override suspend fun getCharacterWithStarshipsDb(id: Int) = flow {
+        val data = starWarsDatabase?.characterDao()?.getCharacterWithStarshipsById(id)
+        emit(data)
+    }.flowOn(Dispatchers.Default)
+
+
+    override suspend fun getRemoteKeys(name: String) = flow {
+        val keys = starWarsDatabase?.remoteKeysDao()?.getRemoteKeys(name)
+        emit(keys)
+    }.flowOn(Dispatchers.Default)
 
     companion object {
         const val DEFAULT_PAGE_SIZE = 20
