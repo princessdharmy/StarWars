@@ -6,6 +6,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.android.test.starwars.data.model.CharacterWithStarships
 import com.android.test.starwars.data.repository.CharacterRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 
 class CharacterViewModel @ViewModelInject constructor(

@@ -1,5 +1,6 @@
 package com.android.test.starwars.data.repository
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.paging.*
 import com.android.test.starwars.data.coroutines.DispatcherProvider
@@ -80,7 +81,6 @@ class CharacterRepositoryImpl @Inject constructor(
         val data = starWarsDatabase?.characterDao()?.getCharacterWithStarshipsById(id)
         emit(data)
     }.flowOn(Dispatchers.Default)
-
 
     override suspend fun getRemoteKeys(name: String) = flow {
         val keys = starWarsDatabase?.remoteKeysDao()?.getRemoteKeys(name)
